@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>ToDo's</title>
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	<link rel="stylesheet" href="./css/styles.css">
+	<script src="./js/bundle.js"></script>
+</head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(toDo, index) in toDos" v-bind:class="toDo.highPriority ? 'highPriority': 'notHighPriority'">
+        <span>{{ toDo.name }}</span>
+        <span v-if="toDo.highPriority"></span>
+        <button v-if="!toDo.highPriority" v-on:click="ChangeHighPriority(index)">Priority</button>
+        </li>
+        </ul>
+      <input v-model="newToDo" type="text">
+      <!-- <label>High</label>
+      <input v-on:click="saveNewToDo()" type="radio">
+      <label>Low</label>
+      <input v-model="newToDo" type="radio"> -->
+      <button v-on:click="saveNewToDo('newToDo')">Save task</button>
+    </div>
+
+  </body>
+</html>
